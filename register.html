@@ -6,75 +6,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-  body { font-family: Arial, sans-serif; background:#0b1228; color:#fff; padding:20px; }
-  .container { max-width:520px; margin:auto; background:#111; padding:20px; border-radius:12px; }
-  label { display:block; margin-top:12px; font-weight:bold; }
-  input, select, textarea, button { width:100%; margin-top:6px; padding:10px; border-radius:8px; border:none; }
-  textarea { min-height:90px; resize:vertical; }
-  button { margin-top:18px; background:gold; font-weight:bold; cursor:pointer; }
-  #status { margin-top:10px; font-size:14px; opacity:.9; }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1228;
+    color: #ffffff;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    background: #111111;
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  p {
+    text-align: center;
+    opacity: 0.85;
+    margin-bottom: 20px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 950px;
+    border: none;
+    border-radius: 12px;
+    background: #ffffff;
+  }
+
+  .back {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+  }
 </style>
 </head>
 
 <body>
+
 <div class="container">
   <h2>PK Match Registration</h2>
+  <p>Please complete the form below to submit your PK Match request.</p>
 
-  <form id="pkForm">
-    <label>Your Name</label>
-    <input name="yourName" required>
+  <!-- GOOGLE FORM EMBED -->
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdvlh1h9USr-rE1X66L15kZLtNWqqgHfNh06CbOOzlcsR6BFg/viewform?embedded=true"
+    loading="lazy">
+    Loading…
+  </iframe>
 
-    <label>Opponent Name</label>
-    <input name="opponentName" required>
-
-    <label>PK Match Date</label>
-    <input type="datetime-local" name="pkDate" required>
-
-    <label>Booster?</label>
-    <select name="booster" required>
-      <option value="">Select</option>
-      <option value="No">No</option>
-      <option value="Yes">Yes</option>
-    </select>
-
-    <label>Notes</label>
-    <textarea name="notes" placeholder="Optional..."></textarea>
-
-    <button id="submitBtn" type="submit">Confirm & Submit</button>
-    <div id="status"></div>
-  </form>
+  <a class="back" href="index.html">← Back to Landing Page</a>
 </div>
 
-<script>
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqJ0su9xC3LS-UigUQmgPWCtv1t-OsnNGpmczR6T3Kltg0glXV8RubAJh0-XRH8lU8/exec";
-
-  const form = document.getElementById("pkForm");
-  const statusEl = document.getElementById("status");
-  const submitBtn = document.getElementById("submitBtn");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    statusEl.textContent = "Submitting...";
-
-    const formData = new FormData(form);
-
-    try {
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: new URLSearchParams(formData)
-      });
-
-      statusEl.textContent = "✅ Submitted! Check your Google Sheet.";
-      form.reset();
-      submitBtn.disabled = false;
-
-    } catch (err) {
-      statusEl.textContent = "❌ Submit failed. Recheck Apps Script deploy access = Anyone.";
-      submitBtn.disabled = false;
-    }
-  });
-</script>
 </body>
 </html>
