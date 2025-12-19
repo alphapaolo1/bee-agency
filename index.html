@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bumblebee Agency PH | Welcome</title>
+
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,Arial,sans-serif;
+  background:radial-gradient(1200px 700px at 20% 10%, #1f2a38 0%, #0a0f14 55%, #06090c 100%);
+  color:#fff;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+  background:rgba(10,14,20,.85);
+  padding:16px;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.brand{
+  font-weight:900;
+  margin-bottom:16px;
+  padding-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav a{
+  display:block;
+  padding:12px;
+  margin-bottom:8px;
+  border-radius:12px;
+  color:#fff;
+  text-decoration:none;
+  background:rgba(255,255,255,.05);
+}
+.nav a.active{background:rgba(255,204,51,.18)}
+
+/* Main */
+.main{padding:30px}
+.wrap{max-width:1100px;margin:auto}
+
+/* Hero */
+.hero{
+  text-align:center;
+  background:rgba(255,255,255,.05);
+  border-radius:18px;
+  padding:28px;
+}
+.hero img{width:220px;margin-bottom:12px}
+.hero h1{margin:6px 0}
+.hero p{opacity:.85}
+
+/* Section title */
+.section-title{
+  margin:28px 0 14px;
+  font-weight:900;
+  font-size:18px;
+  text-align:center;
+}
+
+/* Profile grid */
+.profile-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+}
+
+/* Profile card */
+.profile-card{
+  position:relative;
+  background:rgba(255,255,255,.05);
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.08);
+  transition:.2s;
+  overflow:hidden;
+}
+
+/* Glow + pulse */
+.profile-card::before{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  border-radius:22px;
+  background:linear-gradient(120deg,#ffcc33,#ff9f1c,#ffcc33);
+  opacity:0;
+  filter:blur(16px);
+  z-index:-1;
+}
+.profile-card:hover::before{
+  opacity:.65;
+  animation:pulseGlow 1.8s infinite;
+}
+.profile-card:hover{
+  transform:translateY(-4px);
+  border-color:#ffcc33;
+}
+
+@keyframes pulseGlow{
+  0%{opacity:.35}
+  50%{opacity:.8}
+  100%{opacity:.35}
+}
+
+/* Avatar + flag */
+.avatar-wrap{
+  position:relative;
+  width:96px;
+  height:96px;
+  margin:0 auto 12px;
+}
+.avatar{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid rgba(255,255,255,.25);
+}
+
+/* Flag badge */
+.flag-badge{
+  position:absolute;
+  bottom:-4px;
+  right:-4px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:#000;
+  border:2px solid #ffcc33;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.flag-badge img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* Founder star */
+.flag-badge.star{
+  font-size:16px;
+  color:#ffcc33;
+}
+
+/* Text */
+.role{font-weight:900;font-size:16px}
+.handle{opacity:.75;margin-top:4px}
+
+/* Announcements */
+.ann-grid{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.ann-card{
+  background:rgba(255,255,255,.05);
+  border-radius:16px;
+  padding:18px;
+}
+.tag{
+  font-size:12px;
+  font-weight:900;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,204,51,.15);
+  color:#ffcc33;
+  display:inline-block;
+  margin-bottom:8px;
+}
+
+@media(max-width:820px){
+  .layout{grid-template-columns:1fr}
+  .ann-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">🐝 Bumblebee Agency PH</div>
+    <nav class="nav">
+      <a class="active" href="index.html">🏠 Welcome</a>
+      <a href="register.html">📝 PK Match Registration</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="wrap">
+
+      <!-- Hero -->
+      <section class="hero">
+        <img src="logo.jpeg" alt="Bumblebee Agency Logo">
+        <h1>Welcome to Bumblebee Agency PH</h1>
+        <p>Official agency portal</p>
+      </section>
+
+      <!-- Leaders -->
+      <div class="section-title">🎵 Agency Leaders on TikTok</div>
+
+      <div class="profile-grid">
+
+        <!-- Founder -->
+        <a class="profile-card" href="https://www.tiktok.com/@bumblebee_team69" target="_blank">
+          <div class="avatar-wrap">
+            <img src="founder.jpg" class="avatar" alt="Founder" onerror="this.style.display='none'">
+             <div class="flag-badge"><img src="usa.jpg" alt="USA Flag"></div>>
+          </div>
+          <div class="role">Founder</div>
+          <div class="handle">@bumblebee_team69</div>
+        </a>
+
+        <!-- Philippines -->
+        <a class="profile-card" href="https://www.tiktok.com/@goandcrybabyboy" target="_blank">
+          <div class="avatar-wrap">
+            <img src="pao.png" class="avatar" alt="Philippines Manager" onerror="this.style.display='none'">
+            <div class="flag-badge"><img src="ph.png" alt="PH Flag"></div>
+          </div>
+          <div class="role">Philippines Manager</div>
+          <div class="handle">@goandcrybabyboy</div>
+        </a>
+
+        <!-- UAE -->
+        <a class="profile-card" href="https://www.tiktok.com/@belle09218" target="_blank">
+          <div class="avatar-wrap">
+            <img src="belle.jpg" class="avatar" alt="UAE Manager" onerror="this.style.display='none'">
+            <div class="flag-badge"><img src="uae.png" alt="UAE Flag"></div>
+          </div>
+          <div class="role">United Arab Emirates</div>
+          <div class="handle">@belle09218</div>
+        </a>
+
+        <!-- USA -->
+        <a class="profile-card" href="https://www.tiktok.com/@jerzi71" target="_blank">
+          <div class="avatar-wrap">
+            <img src="jerzy.jpg" class="avatar" alt="US Manager" onerror="this.style.display='none'">
+            <div class="flag-badge"><img src="usa.jpg" alt="USA Flag"></div>
+          </div>
+          <div class="role">United States</div>
+          <div class="handle">@jerzi71</div>
+        </a>
+
+      </div>
+
+      <!-- Announcements -->
+      <div class="section-title">📣 Announcements</div>
+      <div class="ann-grid">
+        <div class="ann-card">
+          <span class="tag">PK MATCH</span>
+          <p>All PK matches must be approved by the Agency.</p>
+        </div>
+        <div class="ann-card">
+          <span class="tag">IMPORTANT</span>
+          <p>No money talk, follow-for-follow, or outside TikTok requests.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
