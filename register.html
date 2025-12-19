@@ -117,7 +117,6 @@
   </div>
 
 <script>
-  // ✅ Your working Apps Script Web App endpoint:
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydi6hHTzf2Vo-Cm_BiMFfqQnpxw6R97zz6TYPgiTwCysJWqnaLGsMT9EBq2rBUKeLo/exec";
 
   const form = document.getElementById("pkForm");
@@ -126,7 +125,6 @@
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
     submitBtn.disabled = true;
     statusEl.textContent = "Submitting…";
 
@@ -139,24 +137,23 @@
     };
 
     try {
-      const res = await fetch(SCRIPT_URL, {
+      // no-cors = browser won't block cross-domain
+      await fetch(SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       });
-
-      const text = await res.text();
-      let data = {};
-      try { data = JSON.parse(text); } catch {}
-
-      if (!res.ok || data.ok === false) throw new Error(data.error || "Submission failed.");
 
       statusEl.textContent = "✅ Submitted! Redirecting…";
       setTimeout(() => window.location.href = "thankyou.html", 700);
 
     } catch (err) {
-      statusEl.textContent = "❌ Error: " + (err?.message || err);
+      statusEl.textContent = "❌ Submit failed. Check Apps Script deployment access = Anyone.";
       submitBtn.disabled = false;
+    }
+  });
+</script>
     }
   });
 </script>
