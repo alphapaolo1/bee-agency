@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You</title>
+  <style>
+    :root{
+      --bg1:#070814; --bg2:#0b1228;
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 600px at 20% 10%, rgba(255,215,0,.12), transparent 60%),
+        radial-gradient(900px 500px at 80% 30%, rgba(120,180,255,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      padding:24px 16px;
+    }
+    .card{
+      width:min(760px, 100%);
+      border:1px solid var(--stroke);
+      background:rgba(0,0,0,.18);
+      border-radius:22px;
+      padding:18px;
+      backdrop-filter: blur(8px);
+      text-align:center;
+    }
+    h1{margin:0 0 8px; font-size:30px}
+    p{margin:10px 0; color:var(--muted); line-height:1.45}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:13px 16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:900;
+      margin:8px 6px;
+    }
+    .btn:hover{border-color: rgba(255,215,0,.35)}
+    .wa{
+      border:1px solid rgba(37,211,102,.45);
+      box-shadow: 0 0 26px rgba(37,211,102,.15);
+    }
+    .wa:hover{border-color: rgba(37,211,102,.70)}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>✅ Thank you!</h1>
+    <p>Your PK Match request was submitted. If you need help or updates, contact us on WhatsApp.</p>
+
+    <a class="btn wa" href="https://wa.me/18155175604" target="_blank">WhatsApp: +1 (815) 517-5604</a>
+    <div>
+      <a class="btn" href="index.html">Back to Landing</a>
+      <a class="btn" href="register.html">Submit Another</a>
+    </div>
+  </div>
+</body>
+</html>
