@@ -1,244 +1,221 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PK Match | Landing</title>
-  <style>
-    :root{
-      --bg1:#070814; --bg2:#0b1228;
-      --card: rgba(255,255,255,.06);
-      --stroke: rgba(255,255,255,.14);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --glow: rgba(255, 215, 0, .35);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--text);
-      background:
-        radial-gradient(1100px 600px at 20% 10%, rgba(255,215,0,.12), transparent 60%),
-        radial-gradient(900px 500px at 80% 30%, rgba(120,180,255,.12), transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
-      min-height:100vh;
-    }
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 16px 60px}
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:14px 16px; border:1px solid var(--stroke); background:rgba(0,0,0,.18);
-      border-radius:18px; backdrop-filter: blur(8px);
-    }
-    .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:42px; height:42px; border-radius:14px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,215,0,.9), rgba(255,215,0,.15) 55%, rgba(255,255,255,.06) 75%);
-      border:1px solid rgba(255,215,0,.35);
-      box-shadow: 0 0 24px rgba(255,215,0,.12);
-    }
-    .title{font-weight:800; letter-spacing:.4px}
-    .subtitle{font-size:13px; color:var(--muted); margin-top:2px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 14px; border-radius:14px;
-      border:1px solid rgba(255,215,0,.35);
-      background: linear-gradient(180deg, rgba(255,215,0,.20), rgba(255,215,0,.06));
-      color:var(--text); text-decoration:none; font-weight:800;
-      box-shadow: 0 0 26px rgba(255,215,0,.12);
-      transition:.18s transform ease, .18s box-shadow ease;
-    }
-    .btn:hover{transform: translateY(-1px); box-shadow:0 0 36px rgba(255,215,0,.18)}
-    .hero{
-      margin-top:20px;
-      border:1px solid var(--stroke);
-      background:rgba(255,255,255,.05);
-      border-radius:22px;
-      padding:18px;
-      overflow:hidden;
-      position:relative;
-    }
-    .pulse{
-      position:absolute; inset:-80px;
-      background: radial-gradient(circle at 35% 30%, rgba(255,215,0,.18), transparent 60%);
-      filter: blur(0px);
-      animation:pulse 3.2s ease-in-out infinite;
-      pointer-events:none;
-    }
-    @keyframes pulse{
-      0%,100%{transform:scale(1); opacity:.65}
-      50%{transform:scale(1.06); opacity:.95}
-    }
-    .heroGrid{
-      position:relative;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:16px;
-      align-items:stretch;
-    }
-    @media (max-width:860px){
-      .heroGrid{grid-template-columns:1fr}
-    }
-    .card{
-      border:1px solid var(--stroke);
-      background:rgba(0,0,0,.18);
-      border-radius:20px;
-      padding:16px;
-      backdrop-filter: blur(8px);
-    }
-    h1{margin:0 0 6px; font-size:28px; letter-spacing:.2px}
-    p{margin:8px 0; color:var(--muted); line-height:1.45}
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px; border-radius:999px;
-      border:1px solid rgba(255,215,0,.30);
-      background: rgba(255,215,0,.08);
-      font-weight:800; font-size:13px;
-    }
-    .grid{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
-    }
-    @media (max-width:980px){ .grid{grid-template-columns: repeat(2,1fr);} }
-    @media (max-width:520px){ .grid{grid-template-columns: 1fr;} }
-    .profile{
-      border:1px solid var(--stroke);
-      background:rgba(255,255,255,.05);
-      border-radius:20px;
-      padding:14px;
-      position:relative;
-      overflow:hidden;
-      transition:.18s transform ease, .18s box-shadow ease;
-    }
-    .profile:hover{transform: translateY(-2px); box-shadow:0 0 34px rgba(255,215,0,.10)}
-    .row{display:flex; align-items:center; gap:10px}
-    .avatar{
-      width:52px; height:52px; border-radius:16px;
-      object-fit:cover;
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 0 22px rgba(255,215,0,.08);
-      background: rgba(255,255,255,.06);
-    }
-    .flag{
-      width:28px; height:28px; border-radius:10px;
-      object-fit:cover;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
-    }
-    .name{font-weight:900}
-    .role{font-size:12px; color:var(--muted); margin-top:2px}
-    .link{
-      margin-top:10px;
-      display:block;
-      text-decoration:none;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      color:var(--text);
-      font-weight:800;
-    }
-    .link:hover{border-color: rgba(255,215,0,.30)}
-    footer{margin-top:18px; color:rgba(255,255,255,.55); font-size:12px}
-  </style>
+<meta charset="UTF-8">
+<title>Bumblebee Agency | PK Match</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root {
+  --bg: #0b1228;
+  --card: #111;
+  --gold: #ffd700;
+  --text: #ffffff;
+  --muted: #b5b5b5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a2352, var(--bg));
+  color: var(--text);
+}
+
+/* ===== HEADER ===== */
+header {
+  padding: 24px 16px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: var(--gold);
+}
+
+header p {
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+/* ===== CTA ===== */
+.cta {
+  margin-top: 20px;
+}
+
+.cta a {
+  display: inline-block;
+  padding: 14px 22px;
+  background: var(--gold);
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+/* ===== SECTION ===== */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px 16px;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ===== ANNOUNCEMENT ===== */
+.announcement {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px;
+  line-height: 1.6;
+  border-left: 5px solid var(--gold);
+}
+
+/* ===== MANAGERS ===== */
+.managers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.manager {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+}
+
+.manager img.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+}
+
+.flag {
+  width: 28px;
+  margin-top: 6px;
+}
+
+.manager h3 {
+  margin: 10px 0 2px;
+}
+
+.manager p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.manager a {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #1b1b1b;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.manager a:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  opacity: 0.6;
+}
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo"></div>
-        <div>
-          <div class="title">PK MATCH • Bumblebee Agency</div>
-          <div class="subtitle">Landing • Managers • Registration</div>
-        </div>
-      </div>
-      <a class="btn" href="register.html">Register PK Match</a>
-    </header>
 
-    <section class="hero">
-      <div class="pulse"></div>
-      <div class="heroGrid">
-        <div class="card">
-          <span class="badge">📣 Announcement</span>
-          <h1>PK Matches need approval</h1>
-          <p>
-            Starting January 2026, ALL PK MATCHES must be approved by the agency.
-            Communicate with your manager and the agency first. Failure to do so will be declined.
-          </p>
-          <p>
-            Please refrain from talking about money / follow-for-follow / anything outside TikTok to avoid suspensions.
-            Let’s support everyone and grow together.
-          </p>
-          <a class="btn" href="register.html">Go to Registration</a>
-        </div>
+<!-- HEADER -->
+<header>
+  <h1>🐝 Bumblebee Agency</h1>
+  <p>Official PK Match Registration & Management</p>
 
-        <div class="card">
-          <span class="badge">✅ Quick Links</span>
-          <p style="margin-top:10px">• Register a PK Match</p>
-          <p>• View Managers (TikTok)</p>
-          <p>• Contact after submission</p>
-          <div style="margin-top:12px">
-            <a class="link" href="register.html">Open Registration Form</a>
-            <a class="link" href="thankyou.html">Thank You / Contact</a>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:16px" class="card">
-        <h2 style="margin:0 0 10px; font-size:18px">Managers (click to open TikTok)</h2>
-        <div class="grid">
-          <div class="profile">
-            <div class="row">
-              <img class="avatar" src="assets/belle.jpg" alt="Founder avatar">
-              <div style="flex:1">
-                <div class="name">Founder</div>
-                <div class="role">@bumblebee_team69</div>
-              </div>
-              <img class="flag" src="assets/ph.png" alt="PH flag">
-            </div>
-            <a class="link" target="_blank" href="https://www.tiktok.com/@bumblebee_team69">Open TikTok Profile</a>
-          </div>
-
-          <div class="profile">
-            <div class="row">
-              <img class="avatar" src="assets/ph.png" alt="PH Manager avatar">
-              <div style="flex:1">
-                <div class="name">Philippines Manager</div>
-                <div class="role">@goandcrybabyboy</div>
-              </div>
-              <img class="flag" src="assets/ph.png" alt="PH flag">
-            </div>
-            <a class="link" target="_blank" href="https://www.tiktok.com/@goandcrybabyboy">Open TikTok Profile</a>
-          </div>
-
-          <div class="profile">
-            <div class="row">
-              <img class="avatar" src="assets/belle.jpg" alt="UAE Manager avatar">
-              <div style="flex:1">
-                <div class="name">United Arab Emirates</div>
-                <div class="role">@belle09218</div>
-              </div>
-              <img class="flag" src="assets/uae.png" alt="UAE flag">
-            </div>
-            <a class="link" target="_blank" href="https://www.tiktok.com/@belle09218">Open TikTok Profile</a>
-          </div>
-
-          <div class="profile">
-            <div class="row">
-              <img class="avatar" src="assets/jerzy.jpg" alt="US Manager avatar">
-              <div style="flex:1">
-                <div class="name">United States</div>
-                <div class="role">@jerzi71</div>
-              </div>
-              <img class="flag" src="assets/usa.jpg" alt="USA flag">
-            </div>
-            <a class="link" target="_blank" href="https://www.tiktok.com/@jerzi71">Open TikTok Profile</a>
-          </div>
-        </div>
-        <footer>Tip: Keep all images inside <b>assets/</b> and match filenames exactly.</footer>
-      </div>
-    </section>
+  <div class="cta">
+    <a href="register.html">Register PK Match</a>
   </div>
+</header>
+
+<!-- ANNOUNCEMENT -->
+<section class="section">
+  <h2>📣 Important Announcement</h2>
+  <div class="announcement">
+    <p>
+      Starting January 2026, <strong>ALL PK MATCHES must be approved</strong> by the Agency.
+      Please communicate with your manager and the Agency before scheduling.
+    </p>
+    <p>
+      ❌ Do NOT discuss money, follow-for-follow, or anything outside TikTok to avoid
+      suspensions or bans.
+    </p>
+    <p>
+      Let’s support each other and grow the hive together 🐝
+    </p>
+  </div>
+</section>
+
+<!-- MANAGERS -->
+<section class="section">
+  <h2>🌍 Agency Managers</h2>
+
+  <div class="managers">
+
+    <div class="manager">
+      <img class="avatar" src="assets/belle.jpg" alt="Founder">
+      <img class="flag" src="assets/ph.png" alt="PH Flag">
+      <h3>Founder</h3>
+      <p>@bumblebee_team69</p>
+      <a href="https://www.tiktok.com/@bumblebee_team69" target="_blank">View TikTok</a>
+    </div>
+
+    <div class="manager">
+      <img class="avatar" src="assets/ph.png" alt="PH Manager">
+      <img class="flag" src="assets/ph.png" alt="PH Flag">
+      <h3>Philippines Manager</h3>
+      <p>@goandcrybabyboy</p>
+      <a href="https://www.tiktok.com/@goandcrybabyboy" target="_blank">View TikTok</a>
+    </div>
+
+    <div class="manager">
+      <img class="avatar" src="assets/belle.jpg" alt="UAE Manager">
+      <img class="flag" src="assets/uae.png" alt="UAE Flag">
+      <h3>United Arab Emirates</h3>
+      <p>@belle09218</p>
+      <a href="https://www.tiktok.com/@belle09218" target="_blank">View TikTok</a>
+    </div>
+
+    <div class="manager">
+      <img class="avatar" src="assets/jerzy.jpg" alt="US Manager">
+      <img class="flag" src="assets/usa.jpg" alt="USA Flag">
+      <h3>United States</h3>
+      <p>@jerzi71</p>
+      <a href="https://www.tiktok.com/@jerzi71" target="_blank">View TikTok</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © Bumblebee Agency • All Rights Reserved
+</footer>
+
 </body>
 </html>
